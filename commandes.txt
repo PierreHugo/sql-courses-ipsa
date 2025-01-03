@@ -1,0 +1,15 @@
+cd C:\Users\Pierre Hugo\OneDrive - IPSA\Documents\Cours IPSA\Bachelor 2\Semestre 2\Base de données\SQL
+
+mysql -u pierre_hugo -p
+
+[mdp]
+
+use parc;
+
+source [nomfichier].sql
+
+show tables;
+
+SELECT * FROM segment;
+
+

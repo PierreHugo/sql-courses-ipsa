@@ -1,0 +1,43 @@
+1)Afficher pour chaque type de chambre le numéro du 
+type de chambre ainsi que le nombre de chambres existantes.
+
+ 
+
+ 
+
+2)Calculer le chiffre d’affaire de l’hôtel (total : la
+somme des locations avec frais supplémentaires des chambres
+* le nbr de nuit louées)
+
+ 
+
+ 
+
+3)Calculer la moyenne/minimum/maximum du chiffre d’affaire des locations
+
+ 
+
+ 
+
+4)On suppose qu’on ajoute une colonne ‘client_ref’ dans la table 
+Client pour désigner le client référent en cas d’une location de
+groupe de personnes (dans le cas d’un voyage organisé par exemple).
+La colonne client_ref contient soit un NC (numéro client d’un autre
+ client) dans le cas où le client a un référent (le référent est 
+aussi un client), ou NULL dans le cas ou le client n’a pas de référent.
+-->  Afficher les noms, prénoms, adresses des clients qui ont comme 
+référent ‘ Emanuel Gardin ’.
+
+
+1) SELECT NTC,COUNT(*) FROM CHAMBRE GROUP BY (NTC)
+
+2) SELECT SUM(FS+FL*PL) FROM CHAMBRE, TypeChambre, Location 
+WHERE CHAMBRE.NTC == TypeChambre.NTC AND CHAMBRE.NC == LocATION.NCH
+
+3)SELECT AVG(FS+FL*PL), MIN(FS+FL*PL), MAX(FS+FL*PL) FROM CHAMBRE, 
+TypeChambre, Location WHERE CHAMBRE.NTC == TypeChambre.NTC AND 
+CHAMBRE.NC == LocATION.NCH
+
+4) SELECT C1.Nom, C1.Prénom, C1.Adresse FROM CLIENT C1, CLIENT C2 
+WHERE C1.Client_ref == C2.NC AND
+C2.Nom == 'Emanuel' AND C2.Prénom == 'Gardin'
